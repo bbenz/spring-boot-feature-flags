@@ -4,6 +4,12 @@
 
 > **Prerequisites:** Minimum **Spring Boot 3** and **Java 17**. 
 
+## Setting up feature flags
+
+- **Follow the steps here:** <br/>
+- https://learn.microsoft.com/en-us/azure/azure-app-configuration/quickstart-java-spring-app
+ 
+
 ## Building the Application
 
 - **Using maven** <br/>``` mvn clean package```

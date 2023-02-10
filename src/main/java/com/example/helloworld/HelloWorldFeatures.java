@@ -1,30 +1,25 @@
-package com.example.helloworld.controller;
+package com.example.helloworld;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.azure.spring.cloud.feature.manager.FeatureManager;
 
 @RestController
-//@ConfigurationProperties("controller")
-public class HelloWorldController {
+@ConfigurationProperties("controller")
+public class HelloWorldFeatures {
     
     //@Autowired
     public FeatureManager featureManager;
 
-    //public HelloWorldController(FeatureManager featureManager) {
-    //    this.featureManager = featureManager;
-    // }
-
-    @GetMapping("/hello")
-    public String sayHey() {
-        return "Hey.";
-    }
+    public HelloWorldFeatures(FeatureManager featureManager) {
+        this.featureManager = featureManager;
+     }
 
     @GetMapping("/feature")
     public String getFeature() {
-        // Retrieve the value of the "Beta" feature flag
+    //  Retrieve the value of the "Beta" feature flag
         boolean myFeatureEnabled = featureManager.isEnabledAsync("Beta").block();
         if (myFeatureEnabled) {
             return "My feature is enabled!";
@@ -32,6 +27,5 @@ public class HelloWorldController {
             return "My feature is disabled.";
         }
     }
-
 
 }
