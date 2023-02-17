@@ -35,7 +35,7 @@ public String getFeature() {
             return "My feature is enabled!";
         } else {
             return "My feature is disabled.";
-//            return "My feature is not thereyet.";
+//            return "My feature is not there yet.";
         }
 
 }
