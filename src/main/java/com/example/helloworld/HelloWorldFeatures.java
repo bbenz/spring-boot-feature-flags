@@ -22,8 +22,8 @@ public class HelloWorldFeatures {
 //        boolean myFeatureEnabled = featureManager.isEnabledAsync("featureManagement.Beta").block();
 //        if (myFeatureEnabled) {
     
-    if(featureManager.isEnabledAsync("featureManagement.Beta").block()) {
-    //if(featureManager.isEnabledAsync("Beta").block()) {
+    //if(featureManager.isEnabledAsync("featureManagement.Beta").block()) {
+    if(featureManager.isEnabledAsync("Beta").block()) {
             return "My feature is enabled!";
         } else {
             return "My feature is disabled.";
