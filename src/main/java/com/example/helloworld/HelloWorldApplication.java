@@ -15,8 +15,8 @@ public class HelloWorldApplication {
         SpringApplication.run(HelloWorldApplication.class, args);
     }
 
-    @Bean
-    FeatureManager featureManager() {
-        return new FeatureManager(new FeatureManagementConfigProperties());
-    }
+   // @Bean
+   // FeatureManager featureManager() {
+   //     return new FeatureManager(new FeatureManagementConfigProperties());
+   // }
 }
