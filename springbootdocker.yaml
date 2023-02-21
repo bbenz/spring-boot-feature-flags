@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springbootdocker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springbootdocker
+  template:
+    metadata:
+      labels:
+        app: springbootdocker
+    spec:
+      containers:
+      - name: springbootdocker
+        image: springbootdocker.azurecr.io/springbootdocker:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: TITLE
+          value: "Welcome to Spring Boot on AKS"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springbootdocker
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: springbootdocker
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: springbootdocker
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: springbootdocker.1438e5dcdd7d432ab540.westus3.aksapp.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: springbootdocker
+            port: 
+              number: 80
+
