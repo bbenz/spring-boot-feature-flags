@@ -18,8 +18,14 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: APP_CONFIGURATION_CONNECTION_STRING
+          valueFrom: 
+            secretKeyRef:
+               name: appconfigstring
+               key: APP_CONFIGURATION_CONNECTION_STRING
         - name: TITLE
-          value: "Welcome to Spring Boot on AKS"
+          value: "Welcome to Spring Boot on AKS"        
+
 ---
 apiVersion: v1
 kind: Service
@@ -28,7 +34,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 80
+  - port: 8080
   selector:
     app: springbootdocker
 ---
@@ -49,5 +55,5 @@ spec:
           service: 
             name: springbootdocker
             port: 
-              number: 80
+              number: 8080
 
