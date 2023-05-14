@@ -17,9 +17,9 @@ public class HelloWorldFeatures {
     public String getFeature()  {
     //     Retrieve the value of the "Beta" feature flag
     if(featureManager.isEnabledAsync("Beta").block()) {
-            return "My DevNexus feature is enabled!";
+            return "My feature is enabled!";
         } else {
-            return "My DevNezus feature is disabled.";
+            return "My feature is disabled.";
         }
     }
 }
