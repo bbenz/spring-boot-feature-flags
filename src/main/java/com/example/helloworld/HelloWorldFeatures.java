@@ -17,9 +17,9 @@ public class HelloWorldFeatures {
     public String getFeature()  {
     //     Retrieve the value of the "Beta" feature flag
     if(featureManager.isEnabledAsync("Beta").block()) {
-            return "My Build 2023 feature is enabled!";
+            return "My feature is enabled!";
         } else {
-            return "My Build 2023 feature is disabled.";
+            return "My feature is disabled.";
         }
     }
 }
